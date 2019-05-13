@@ -3,6 +3,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Slider?>
@@ -11,6 +12,9 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.canvas.Canvas?>
 
 <BorderPane styleClass="main" fx:controller="sample.Controller" xmlns:fx="http://javafx.com/fxml">
     <top>
@@ -26,52 +30,57 @@
         </BorderPane>
     </top>
     <center>
-        <GridPane styleClass="main" alignment="center" hgap="1" vgap="1">
-            <Label text="Now Playing: " alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.columnSpan="5"/>
-            <ToggleButton fx:id="pbutton" styleClass="play" GridPane.rowIndex="1" GridPane.columnIndex="1" onMousePressed="#playPressed">
-                <graphic>
-                    <ImageView fx:id="plypsimage" fitHeight="50" fitWidth="50">
-                        <image>
-                            <Image url="@icons/play-button.png"/>
-                        </image>
-                    </ImageView>
-                </graphic>
-            </ToggleButton>
-            <Button fx:id="prev" styleClass="prev" GridPane.rowIndex="1" GridPane.columnIndex="0" onMousePressed="#prevPressed">
-                <graphic>
-                    <ImageView fx:id="play" fitHeight="50" fitWidth="50">
-                        <image>
-                            <Image url="@icons/previous.png"/>
-                        </image>
-                    </ImageView>
-                </graphic>
-            </Button>
-            <Button fx:id="stop" styleClass="play" GridPane.rowIndex="1" GridPane.columnIndex="2" onMousePressed="#stopPressed">
-                <graphic>
-                    <ImageView fx:id="play" fitHeight="50" fitWidth="50">
-                        <image>
-                            <Image url="@icons/stop.png"/>
-                        </image>
-                    </ImageView>
-                </graphic>
-            </Button>
-            <Button fx:id="skip" styleClass="skip" GridPane.rowIndex="1" GridPane.columnIndex="3" onMousePressed="#skipPressed">
-                <graphic>
-                    <ImageView fx:id="play" fitHeight="50" fitWidth="50">
-                        <image>
-                            <Image url="@icons/next.png"/>
-                        </image>
-                    </ImageView>
-                </graphic>
-            </Button>
-            <Slider fx:id="slider"  GridPane.rowIndex="2" GridPane.columnSpan="5" onMousePressed="#sliderPressed" onMouseReleased="#sliderReleased"/>
-        </GridPane>
+        <StackPane styleClass="main">
+            <children>
+                <Canvas fx:id="canvas" height="130" width="450"/>
+                <GridPane styleClass="maincontrols" alignment="center" hgap="1" vgap="1">
+                    <Label text="Now Playing: " fx:id="nowplaying" alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.columnSpan="5"/>
+                    <ToggleButton fx:id="pbutton" styleClass="play" GridPane.rowIndex="1" GridPane.columnIndex="1" onMousePressed="#playPressed">
+                        <graphic>
+                            <ImageView fx:id="plypsimage" fitHeight="50" fitWidth="50">
+                                <image>
+                                    <Image url="@icons/play-button.png"/>
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </ToggleButton>
+                    <Button fx:id="prev" styleClass="prev" GridPane.rowIndex="1" GridPane.columnIndex="0" onMousePressed="#prevPressed">
+                        <graphic>
+                            <ImageView fx:id="play" fitHeight="50" fitWidth="50">
+                                <image>
+                                    <Image url="@icons/previous.png"/>
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="stop" styleClass="play" GridPane.rowIndex="1" GridPane.columnIndex="2" onMousePressed="#stopPressed">
+                        <graphic>
+                            <ImageView fx:id="play" fitHeight="50" fitWidth="50">
+                                <image>
+                                    <Image url="@icons/stop.png"/>
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="skip" styleClass="skip" GridPane.rowIndex="1" GridPane.columnIndex="3" onMousePressed="#skipPressed">
+                        <graphic>
+                            <ImageView fx:id="play" fitHeight="50" fitWidth="50">
+                                <image>
+                                    <Image url="@icons/next.png"/>
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Slider fx:id="slider"  GridPane.rowIndex="2" GridPane.columnSpan="5" onMousePressed="#sliderPressed" onMouseReleased="#sliderReleased"/>
+                </GridPane>
+            </children>
+        </StackPane>
     </center>
     <bottom>
         <ScrollPane fx:id="playlist" styleClass="main" prefHeight="150" fitToWidth="true" onDragOver="#dragHandler" onDragDropped="#dropHandler">
-            <VBox styleClass="plist">
+            <VBox fx:id="plist" styleClass="plist">
                 <children>
-                    <Button text="Lorem Ipsum Dolor Sit Amet" fx:id="song1" styleClass="transparent"/>
+                    <Button text="Drag and Drop Music Files Here!" fx:id="song1" styleClass="transparent"/>
                 </children>
             </VBox>
         </ScrollPane>

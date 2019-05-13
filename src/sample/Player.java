@@ -1,11 +1,13 @@
 package sample;
 
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import javafx.application.Application;
 import javafx.beans.property.ReadOnlyObjectProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.util.Duration;
 import javafx.scene.media.Media;
@@ -25,6 +27,14 @@ public class Player extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         listIndex = 0;
+
+        player.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("end of track reached");
+                skipTrack();
+            }
+        });
     }
 
     Boolean openFile(String dir) {
@@ -64,7 +74,7 @@ public class Player extends Application {
             restart();
         }
         else{
-            System.out.println("true");
+            pickTrack(--listIndex);
         }
     }
 
@@ -82,6 +92,12 @@ public class Player extends Application {
         return player.getMedia().getDuration();
     }
 
+    public List<String> getPlaylist(){
+        List<String> copy = new ArrayList<>();
+        copy.addAll(playlist);
+        return copy;
+    }
+
     public void addTrack(String dir){
         playlist.add(dir);
     }
@@ -93,6 +109,12 @@ public class Player extends Application {
         }
         openFile(playlist.get(++listIndex));
         play();
+    }
+
+    public String getTitle(){
+        String title = (String) player.getMedia().getMetadata().get("title");
+        String artist = (String) player.getMedia().getMetadata().get("artist");
+        return artist + " - " + title;
     }
 
     public void pickTrack(int index){
