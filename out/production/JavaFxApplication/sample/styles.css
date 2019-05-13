@@ -1,0 +1,90 @@
+.main {
+    -fx-font-size: 14px;
+    -fx-font-family: sans-serif;
+    -fx-background-color: #424242;
+}
+
+.main Label{
+    -fx-text-fill: #848484;
+}
+
+.invis {
+    -fx-text-fill: #424242
+}
+
+.plist {
+    -fx-background-color: #212121;
+}
+
+.transparent {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+}
+
+.close{
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+}
+
+.play {
+    -fx-shape: "M 350 300 A 25 25 0 1 1 400 300 A 25 25 0 1 1 350 300 Z";
+    -fx-background-color: transparent;
+}
+
+.skip {
+    -fx-shape: "M 350 300 A 25 25 0 1 1 400 300 A 25 25 0 1 1 350 300 Z";
+    -fx-background-color: transparent;
+}
+.prev {
+    -fx-shape: "M 350 300 A 25 25 0 1 1 400 300 A 25 25 0 1 1 350 300 Z";
+    -fx-background-color: transparent;
+}
+
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-color: #181818;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #848484;
+    -fx-background-radius: 5em;
+}
+
+.slider {
+    -fx-padding: 20px;
+}
+
+.slider .track {
+    -fx-background-color: #848484;
+    -fx-pref-height:3;
+}
+
+.slider:vertical .track {
+    -fx-pref-width:20;
+}
+
+.slider .thumb {
+    -fx-background-color: black;
+    -fx-pref-height: 10;
+    -fx-pref-width: 10;
+}
